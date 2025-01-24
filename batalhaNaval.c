@@ -23,12 +23,12 @@ int main()
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
 
-    char *orientacaoN[3] = {"v", "h", "h"};
+    char *orientacaoN[4] = {"v", "h", "d","d"};
 
-    int navios = 3;
+    int navios = 4;
 
-    int coordenadasx[10] = {1 - 1, 7 - 1, 7 - 1};
-    int coordenadasy[10] = {3 - 1, 4 - 1, 8 - 1};
+    int coordenadasx[10] = {4 - 1, 7 - 1, 7 - 1, 3 - 1};
+    int coordenadasy[10] = {4 - 1, 4 - 1, 8 - 1, 8 - 1};
 
 
     for (int n = 0; n < navios; n++)//loop para numero de navios
@@ -53,6 +53,12 @@ int main()
                 else if (orientacaoN[n] == "h")// se a orientacao for horizontal X recebe + e - 1 {-1,1,+1} inverso do vertical
                 {
                     if ((coordenadasx[n] == x || coordenadasx[n] - 1 == x || coordenadasx[n] + 1 == x) && (coordenadasy[n] == y)) 
+                    {
+                        area[y][x] = 3; 
+                    }
+                }else if (orientacaoN[n] == "d")// se a orientacao for diagonal X recebe + e - 1 {-1,1,+1} inverso do vertical
+                {
+                    if ((coordenadasy[n] == y && coordenadasx[n] == x)||(coordenadasx[n]-1 == x)&&(coordenadasy[n]-1 == y)||(coordenadasx[n]+1 == x)&&(coordenadasy[n]+1 == y)) //criei uma nova coord subtraindo os dois valores e somando por 1.
                     {
                         area[y][x] = 3; 
                     }
